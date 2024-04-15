@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { Canvas, Component, HeaderBar } from "./Widget"
+// import { Canvas, Component, HeaderBar } from "./Widget"
+import { ShopLayout } from "./additional/ShopLayout";
 
 let loginForm: HTMLElement | null = document.getElementById('login-form')
 console.log(loginForm)
@@ -27,11 +28,11 @@ function login():void{
     let newUser: User = User.createNewUser(name, +age)
     User._currentUser = newUser
     console.log(User._currentUser)
-    //createShoppingPage()
+    createShoppingPage()
 }
 
 
-class Item {
+export class Item {
 
     constructor(private _id: string, private _name: string, private _price: number, private _description: string){}
 
@@ -141,67 +142,67 @@ class User {
     public printCart():void{
         console.log(this.cart)
     }
+
+    public cartHTMLElement():HTMLElement{
+        let cart:HTMLElement = document.getElementById('cart')!
+        const newStyle1: Partial<CSSStyleDeclaration> ={
+            width: "30vw",
+            padding: "0",
+            margin: "0",
+            height: "80vh",
+            backgroundColor: "rgb(181, 181, 181)"
+        }
+        Object.assign(cart.style, newStyle1)
+        return cart
+    }
 }
 
 function createShoppingPage():void{
     
+    let TV:Item = new Item(uuidv4(), "TV", 500, "Entertainment")
+    let car:Item = new Item(uuidv4(), "car", 1000, "vehicle")
+    let pants:Item =  new Item(uuidv4(), "pants", 10.00, "clothing")
+    let notebook:Item = new Item(uuidv4(), "notebook", 2.00, "school supplies")
+    let robot:Item = new Item(uuidv4(), "robot", 10000.00, "electronics")
+    let soda:Item = new Item(uuidv4(), "soda", 0.25, "beverage")
+
+    
+    let newShop: Shop = new Shop(TV, car, pants, notebook, robot, soda)
+    Shop.currentShop = newShop
+
+    
+    let shop:HTMLElement  = document.getElementById("shop")!
+    const shopLayout = new ShopLayout()
+    shopLayout.createOuterContainers()
+    for (let item of Shop.currentShop.cart){shopLayout.createItemCard(item)}
+    for (let item of shopLayout.cards.slice(0,3)){
+        shopLayout.outerComponents[0].append(item)
+    }
+    for (let item of shopLayout.cards.slice(3,7)){
+        shopLayout.outerComponents[1].append(item)
+    }
+    User._currentUser?.cartHTMLElement()
 }
 
-// class Shop {
+
+class Shop {
+    private static _currentShop: Shop | null = null;
     
-//     constructor(private _item1: Item, private _item2: Item, private _item3: Item){}
+    constructor(private _item1: Item, private _item2: Item, private _item3: Item, private _item4: Item, private _item5: Item, private _item6: Item){}
 
-//     private _cart: Item[]=[this._item1, this._item2, this._item3]
+    private _cart: Item[]=[this._item1, this._item2, this._item3, this._item4, this._item5, this._item6]
 
-//     public get cart(): Item[] {
-//         return this._cart;
-//     }
-//     public set cart(value: Item[]) {
-//         this._cart = value;
-//     }
+    public get cart(): Item[] {
+        return this._cart;
+    }
+    public set cart(value: Item[]) {
+        this._cart = value;
+    }
 
-// }
-
-// function createUser (name:string, age: number):User{
-//     let uuid:string = uuidv4()
-//     return new User(uuid, name, age)
-// }
-
-// function createItem (name:string, price:number, description:string):Item{
-//     let uuid:string = uuidv4()
-//     return new Item(uuid, name, price, description)
-// }
-
-
-// //Driver Code
-
-
-// let Jean:User = createUser("Jean", 99)
-// console.log(Jean)
-
-// let pants:Item = createItem("pants", 10.00, "clothing")
-// console.log(pants)
-
-// let car:Item = createItem("car", 1000, "vehicle")
-// console.log(car)
-
-// let TV:Item = createItem("TV", 500, "Entertainment")
-// console.log(TV)
-
-// let Target:Shop = new Shop(pants, car, TV)
-// console.log(Target.cart)
-
-// Jean.addToCart(pants)
-// Jean.printCart
-
-// for (let item of Target.cart) {
-//     Jean.addToCart(item)
-//     Jean.addToCart(item)
-//     Jean.addToCart(item)
-// }
-
-// Jean.printCart()
-// Jean.removeFromCart(pants)
-// Jean.removeQuantityFromCart(TV, 1)
-// Jean.printCart()
-// console.log(Jean.cartTotal())
+    public static get currentShop(): Shop | null {
+        return Shop._currentShop;
+    }
+    public static set currentShop(value: Shop | null) {
+        Shop._currentShop = value;
+    }
+}

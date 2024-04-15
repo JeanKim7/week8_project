@@ -32,3 +32,6 @@
 .login-button {
     width: 100%
 }
+#shopping-cart-canvas {
+    display:flex;
+}

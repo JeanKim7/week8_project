@@ -2,10 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */
+/* 1 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -68,28 +65,28 @@ Object.defineProperty(exports, "version", ({
   }
 }));
 
-var _v = _interopRequireDefault(__webpack_require__(5));
+var _v = _interopRequireDefault(__webpack_require__(2));
 
-var _v2 = _interopRequireDefault(__webpack_require__(10));
+var _v2 = _interopRequireDefault(__webpack_require__(7));
 
-var _v3 = _interopRequireDefault(__webpack_require__(14));
+var _v3 = _interopRequireDefault(__webpack_require__(11));
 
-var _v4 = _interopRequireDefault(__webpack_require__(16));
+var _v4 = _interopRequireDefault(__webpack_require__(13));
 
-var _nil = _interopRequireDefault(__webpack_require__(18));
+var _nil = _interopRequireDefault(__webpack_require__(15));
 
-var _version = _interopRequireDefault(__webpack_require__(19));
+var _version = _interopRequireDefault(__webpack_require__(16));
 
-var _validate = _interopRequireDefault(__webpack_require__(8));
+var _validate = _interopRequireDefault(__webpack_require__(5));
 
-var _stringify = _interopRequireDefault(__webpack_require__(7));
+var _stringify = _interopRequireDefault(__webpack_require__(4));
 
-var _parse = _interopRequireDefault(__webpack_require__(12));
+var _parse = _interopRequireDefault(__webpack_require__(9));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 5 */
+/* 2 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -99,9 +96,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _rng = _interopRequireDefault(__webpack_require__(6));
+var _rng = _interopRequireDefault(__webpack_require__(3));
 
-var _stringify = __webpack_require__(7);
+var _stringify = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -201,7 +198,7 @@ var _default = v1;
 exports["default"] = _default;
 
 /***/ }),
-/* 6 */
+/* 3 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -231,7 +228,7 @@ function rng() {
 }
 
 /***/ }),
-/* 7 */
+/* 4 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -242,7 +239,7 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = void 0;
 exports.unsafeStringify = unsafeStringify;
 
-var _validate = _interopRequireDefault(__webpack_require__(8));
+var _validate = _interopRequireDefault(__webpack_require__(5));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -280,7 +277,7 @@ var _default = stringify;
 exports["default"] = _default;
 
 /***/ }),
-/* 8 */
+/* 5 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -290,7 +287,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _regex = _interopRequireDefault(__webpack_require__(9));
+var _regex = _interopRequireDefault(__webpack_require__(6));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -302,7 +299,7 @@ var _default = validate;
 exports["default"] = _default;
 
 /***/ }),
-/* 9 */
+/* 6 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -315,7 +312,7 @@ var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[
 exports["default"] = _default;
 
 /***/ }),
-/* 10 */
+/* 7 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -325,9 +322,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _v = _interopRequireDefault(__webpack_require__(11));
+var _v = _interopRequireDefault(__webpack_require__(8));
 
-var _md = _interopRequireDefault(__webpack_require__(13));
+var _md = _interopRequireDefault(__webpack_require__(10));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -336,7 +333,7 @@ var _default = v3;
 exports["default"] = _default;
 
 /***/ }),
-/* 11 */
+/* 8 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -347,9 +344,9 @@ Object.defineProperty(exports, "__esModule", ({
 exports.URL = exports.DNS = void 0;
 exports["default"] = v35;
 
-var _stringify = __webpack_require__(7);
+var _stringify = __webpack_require__(4);
 
-var _parse = _interopRequireDefault(__webpack_require__(12));
+var _parse = _interopRequireDefault(__webpack_require__(9));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -421,7 +418,7 @@ function v35(name, version, hashfunc) {
 }
 
 /***/ }),
-/* 12 */
+/* 9 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -431,7 +428,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _validate = _interopRequireDefault(__webpack_require__(8));
+var _validate = _interopRequireDefault(__webpack_require__(5));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -471,7 +468,7 @@ var _default = parse;
 exports["default"] = _default;
 
 /***/ }),
-/* 13 */
+/* 10 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -699,7 +696,7 @@ var _default = md5;
 exports["default"] = _default;
 
 /***/ }),
-/* 14 */
+/* 11 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -709,11 +706,11 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _native = _interopRequireDefault(__webpack_require__(15));
+var _native = _interopRequireDefault(__webpack_require__(12));
 
-var _rng = _interopRequireDefault(__webpack_require__(6));
+var _rng = _interopRequireDefault(__webpack_require__(3));
 
-var _stringify = __webpack_require__(7);
+var _stringify = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -747,7 +744,7 @@ var _default = v4;
 exports["default"] = _default;
 
 /***/ }),
-/* 15 */
+/* 12 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -763,7 +760,7 @@ var _default = {
 exports["default"] = _default;
 
 /***/ }),
-/* 16 */
+/* 13 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -773,9 +770,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _v = _interopRequireDefault(__webpack_require__(11));
+var _v = _interopRequireDefault(__webpack_require__(8));
 
-var _sha = _interopRequireDefault(__webpack_require__(17));
+var _sha = _interopRequireDefault(__webpack_require__(14));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -784,7 +781,7 @@ var _default = v5;
 exports["default"] = _default;
 
 /***/ }),
-/* 17 */
+/* 14 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -893,7 +890,7 @@ var _default = sha1;
 exports["default"] = _default;
 
 /***/ }),
-/* 18 */
+/* 15 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -906,7 +903,7 @@ var _default = '00000000-0000-0000-0000-000000000000';
 exports["default"] = _default;
 
 /***/ }),
-/* 19 */
+/* 16 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -916,7 +913,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _validate = _interopRequireDefault(__webpack_require__(8));
+var _validate = _interopRequireDefault(__webpack_require__(5));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -930,6 +927,81 @@ function version(uuid) {
 
 var _default = version;
 exports["default"] = _default;
+
+/***/ }),
+/* 17 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ShopLayout = void 0;
+class ShopLayout {
+    constructor() {
+        this._outerComponents = [];
+        this._cards = [];
+    }
+    get outerComponents() {
+        return this._outerComponents;
+    }
+    set outerComponents(value) {
+        this._outerComponents = value;
+    }
+    get cards() {
+        return this._cards;
+    }
+    set cards(value) {
+        this._cards = value;
+    }
+    createOuterContainers() {
+        let shop = document.getElementById("shop");
+        const newStyle1 = {
+            width: "70vw",
+            padding: "0",
+            margin: "0",
+            height: "80vh"
+        };
+        Object.assign(shop.style, newStyle1);
+        let div = document.createElement('div');
+        const newStyle = {
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "70vw",
+            backgroundColor: "#d3d3d3",
+            height: "40vh"
+        };
+        Object.assign(div.style, newStyle);
+        this.outerComponents.push(div);
+        let div2 = document.createElement('div');
+        const newStyle2 = {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "70vw",
+            backgroundColor: "#d3d3d3",
+            height: "40vh"
+        };
+        Object.assign(div2.style, newStyle);
+        this.outerComponents.push(div2);
+        shop.append(div);
+        shop.append(div2);
+    }
+    createItemCard(item) {
+        let div = document.createElement('div');
+        div.innerHTML = `<div class="card"  style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${item.name}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
+          <p class="card-text">${item.description}</p>
+          <a href="#" id=${item.id} class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+        `;
+        this._cards.push(div);
+    }
+}
+exports.ShopLayout = ShopLayout;
+
 
 /***/ })
 /******/ 	]);
@@ -965,7 +1037,10 @@ var __webpack_exports__ = {};
 var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const uuid_1 = __webpack_require__(4);
+exports.Item = void 0;
+const uuid_1 = __webpack_require__(1);
+// import { Canvas, Component, HeaderBar } from "./Widget"
+const ShopLayout_1 = __webpack_require__(17);
 let loginForm = document.getElementById('login-form');
 console.log(loginForm);
 let loginCont = document.getElementById('login-cont');
@@ -991,7 +1066,7 @@ function login() {
     let newUser = User.createNewUser(name, +age);
     User._currentUser = newUser;
     console.log(User._currentUser);
-    //createShoppingPage()
+    createShoppingPage();
 }
 class Item {
     constructor(_id, _name, _price, _description) {
@@ -1025,6 +1100,7 @@ class Item {
         this._id = value;
     }
 }
+exports.Item = Item;
 class User {
     static createNewUser(name, age) {
         let uuid = (0, uuid_1.v4)();
@@ -1101,51 +1177,68 @@ class User {
     printCart() {
         console.log(this.cart);
     }
+    cartHTMLElement() {
+        let cart = document.getElementById('cart');
+        const newStyle1 = {
+            width: "30vw",
+            padding: "0",
+            margin: "0",
+            height: "80vh",
+            backgroundColor: "rgb(181, 181, 181)"
+        };
+        Object.assign(cart.style, newStyle1);
+        return cart;
+    }
 }
 User._currentUser = null;
 function createShoppingPage() {
+    var _a;
+    let TV = new Item((0, uuid_1.v4)(), "TV", 500, "Entertainment");
+    let car = new Item((0, uuid_1.v4)(), "car", 1000, "vehicle");
+    let pants = new Item((0, uuid_1.v4)(), "pants", 10.00, "clothing");
+    let notebook = new Item((0, uuid_1.v4)(), "notebook", 2.00, "school supplies");
+    let robot = new Item((0, uuid_1.v4)(), "robot", 10000.00, "electronics");
+    let soda = new Item((0, uuid_1.v4)(), "soda", 0.25, "beverage");
+    let newShop = new Shop(TV, car, pants, notebook, robot, soda);
+    Shop.currentShop = newShop;
+    let shop = document.getElementById("shop");
+    const shopLayout = new ShopLayout_1.ShopLayout();
+    shopLayout.createOuterContainers();
+    for (let item of Shop.currentShop.cart) {
+        shopLayout.createItemCard(item);
+    }
+    for (let item of shopLayout.cards.slice(0, 3)) {
+        shopLayout.outerComponents[0].append(item);
+    }
+    for (let item of shopLayout.cards.slice(3, 7)) {
+        shopLayout.outerComponents[1].append(item);
+    }
+    (_a = User._currentUser) === null || _a === void 0 ? void 0 : _a.cartHTMLElement();
 }
-// class Shop {
-//     constructor(private _item1: Item, private _item2: Item, private _item3: Item){}
-//     private _cart: Item[]=[this._item1, this._item2, this._item3]
-//     public get cart(): Item[] {
-//         return this._cart;
-//     }
-//     public set cart(value: Item[]) {
-//         this._cart = value;
-//     }
-// }
-// function createUser (name:string, age: number):User{
-//     let uuid:string = uuidv4()
-//     return new User(uuid, name, age)
-// }
-// function createItem (name:string, price:number, description:string):Item{
-//     let uuid:string = uuidv4()
-//     return new Item(uuid, name, price, description)
-// }
-// //Driver Code
-// let Jean:User = createUser("Jean", 99)
-// console.log(Jean)
-// let pants:Item = createItem("pants", 10.00, "clothing")
-// console.log(pants)
-// let car:Item = createItem("car", 1000, "vehicle")
-// console.log(car)
-// let TV:Item = createItem("TV", 500, "Entertainment")
-// console.log(TV)
-// let Target:Shop = new Shop(pants, car, TV)
-// console.log(Target.cart)
-// Jean.addToCart(pants)
-// Jean.printCart
-// for (let item of Target.cart) {
-//     Jean.addToCart(item)
-//     Jean.addToCart(item)
-//     Jean.addToCart(item)
-// }
-// Jean.printCart()
-// Jean.removeFromCart(pants)
-// Jean.removeQuantityFromCart(TV, 1)
-// Jean.printCart()
-// console.log(Jean.cartTotal())
+class Shop {
+    constructor(_item1, _item2, _item3, _item4, _item5, _item6) {
+        this._item1 = _item1;
+        this._item2 = _item2;
+        this._item3 = _item3;
+        this._item4 = _item4;
+        this._item5 = _item5;
+        this._item6 = _item6;
+        this._cart = [this._item1, this._item2, this._item3, this._item4, this._item5, this._item6];
+    }
+    get cart() {
+        return this._cart;
+    }
+    set cart(value) {
+        this._cart = value;
+    }
+    static get currentShop() {
+        return Shop._currentShop;
+    }
+    static set currentShop(value) {
+        Shop._currentShop = value;
+    }
+}
+Shop._currentShop = null;
 
 })();
 
