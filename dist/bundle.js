@@ -929,145 +929,14 @@ var _default = version;
 exports["default"] = _default;
 
 /***/ }),
-/* 17 */
-/***/ ((__unused_webpack_module, exports) => {
+/* 17 */,
+/* 18 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ShopLayout = void 0;
-class ShopLayout {
-    constructor() {
-        this._outerComponents = [];
-        this._cards = [];
-    }
-    get outerComponents() {
-        return this._outerComponents;
-    }
-    set outerComponents(value) {
-        this._outerComponents = value;
-    }
-    get cards() {
-        return this._cards;
-    }
-    set cards(value) {
-        this._cards = value;
-    }
-    createOuterContainers() {
-        let shop = document.getElementById("shop");
-        const newStyle1 = {
-            width: "70vw",
-            padding: "0",
-            margin: "0",
-            height: "80vh"
-        };
-        Object.assign(shop.style, newStyle1);
-        let div = document.createElement('div');
-        const newStyle = {
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: "70vw",
-            backgroundColor: "#d3d3d3",
-            height: "40vh"
-        };
-        Object.assign(div.style, newStyle);
-        this.outerComponents.push(div);
-        let div2 = document.createElement('div');
-        const newStyle2 = {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "70vw",
-            backgroundColor: "#d3d3d3",
-            height: "40vh"
-        };
-        Object.assign(div2.style, newStyle);
-        this.outerComponents.push(div2);
-        shop.append(div);
-        shop.append(div2);
-    }
-    createItemCard(item) {
-        let div = document.createElement('div');
-        div.innerHTML = `<div class="card"  style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">${item.name}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
-          <p class="card-text">${item.description}</p>
-          <a href="#" id=${item.id} class="btn btn-primary">Add to Cart</a>
-        </div>
-      </div>
-        `;
-        this._cards.push(div);
-    }
-}
-exports.ShopLayout = ShopLayout;
-
-
-/***/ })
-/******/ 	]);
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-var exports = __webpack_exports__;
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Item = void 0;
+exports.Shop = exports.User = exports.Item = void 0;
 const uuid_1 = __webpack_require__(1);
-// import { Canvas, Component, HeaderBar } from "./Widget"
-const ShopLayout_1 = __webpack_require__(17);
-let loginForm = document.getElementById('login-form');
-console.log(loginForm);
-let loginCont = document.getElementById('login-cont');
-loginForm === null || loginForm === void 0 ? void 0 : loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log("submitted");
-    login();
-});
-function login() {
-    console.log("logging in");
-    let name = document.getElementById('name-input').value.toString();
-    console.log(name);
-    let age = document.getElementById('age-input').value.toString();
-    console.log(age);
-    if (name !== "" && age != "" && !isNaN(+age)) {
-        const newStyle = {
-            display: "none"
-        };
-        if (loginCont) {
-            Object.assign(loginCont.style, newStyle);
-        }
-    }
-    let newUser = User.createNewUser(name, +age);
-    User._currentUser = newUser;
-    console.log(User._currentUser);
-    createShoppingPage();
-}
 class Item {
     constructor(_id, _name, _price, _description) {
         this._id = _id;
@@ -1098,6 +967,18 @@ class Item {
     }
     set id(value) {
         this._id = value;
+    }
+    itemElement() {
+        let div = document.createElement('div');
+        div.innerHTML = `<div class="card"  style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${this.name}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">$${this.price}</h6>
+              <p class="card-text">${this.description}</p>
+              <a href="#" id=${this.id} class="btn btn-primary">Add to Cart</a>
+            </div>
+          </div>`;
+        return div;
     }
 }
 exports.Item = Item;
@@ -1178,6 +1059,7 @@ class User {
         console.log(this.cart);
     }
     cartHTMLElement() {
+        var _a;
         let cart = document.getElementById('cart');
         const newStyle1 = {
             width: "30vw",
@@ -1187,49 +1069,74 @@ class User {
             backgroundColor: "rgb(181, 181, 181)"
         };
         Object.assign(cart.style, newStyle1);
-        return cart;
+        cart.innerHTML = '';
+        if (Shop.currentUser.cart.length === 0) {
+            cart.innerHTML = "<h3>Your cart is currently empty</h3>";
+            return null;
+        }
+        else {
+            let checkoutTable = document.createElement('table');
+            checkoutTable.innerHTML = `<tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        </tr>`;
+            const myCartSet = new Set(this.cart);
+            for (let item of myCartSet) {
+                let tableRow = document.createElement('tr');
+                let cell1 = document.createElement('td');
+                cell1.innerHTML = item.name;
+                let cell2 = document.createElement('td');
+                cell2.innerHTML = `$${item.price.toString()}`;
+                let itemCount = this.cart.filter(x => x.id == item.id);
+                let cell3 = document.createElement('td');
+                cell3.innerHTML = `${itemCount.length}`;
+                let cell4 = document.createElement('td');
+                let removeAllButton;
+                cell4.innerHTML = `<button id="${item.name}removeAll">X</button>`;
+                let cell5 = document.createElement('td');
+                cell5.innerHTML = `<button id="${item.name}removeOne">-1</button>`;
+                tableRow.append(cell1, cell2, cell3, cell4, cell5);
+                checkoutTable.append(tableRow);
+                $(Shop.currentUser.addRemoveEventListeners(item), {});
+                console.log(checkoutTable);
+            }
+            console.log(document.getElementById(`"$robot"`));
+            let checkoutTotal = document.createElement('h4');
+            checkoutTotal.innerHTML = `Total: $${(_a = Shop.currentUser) === null || _a === void 0 ? void 0 : _a.cartTotal()}`;
+            cart.append(checkoutTable, checkoutTotal);
+            return cart;
+        }
+    }
+    addRemoveEventListeners(item) {
+        let removeAll = document.getElementById(`${item.name}removeAll`);
+        removeAll.addEventListener('click', () => {
+            Shop.currentUser.removeFromCart(item);
+            Shop.currentUser.cartHTMLElement();
+        });
+        let removeOne = document.getElementById(`${item.name}removeOne`);
+        removeOne.addEventListener('click', () => {
+            this.removeQuantityFromCart(item, 1);
+            this.cartHTMLElement();
+        });
     }
 }
-User._currentUser = null;
-function createShoppingPage() {
-    var _a;
-    let TV = new Item((0, uuid_1.v4)(), "TV", 500, "Entertainment");
-    let car = new Item((0, uuid_1.v4)(), "car", 1000, "vehicle");
-    let pants = new Item((0, uuid_1.v4)(), "pants", 10.00, "clothing");
-    let notebook = new Item((0, uuid_1.v4)(), "notebook", 2.00, "school supplies");
-    let robot = new Item((0, uuid_1.v4)(), "robot", 10000.00, "electronics");
-    let soda = new Item((0, uuid_1.v4)(), "soda", 0.25, "beverage");
-    let newShop = new Shop(TV, car, pants, notebook, robot, soda);
-    Shop.currentShop = newShop;
-    let shop = document.getElementById("shop");
-    const shopLayout = new ShopLayout_1.ShopLayout();
-    shopLayout.createOuterContainers();
-    for (let item of Shop.currentShop.cart) {
-        shopLayout.createItemCard(item);
-    }
-    for (let item of shopLayout.cards.slice(0, 3)) {
-        shopLayout.outerComponents[0].append(item);
-    }
-    for (let item of shopLayout.cards.slice(3, 7)) {
-        shopLayout.outerComponents[1].append(item);
-    }
-    (_a = User._currentUser) === null || _a === void 0 ? void 0 : _a.cartHTMLElement();
-}
+exports.User = User;
 class Shop {
-    constructor(_item1, _item2, _item3, _item4, _item5, _item6) {
+    constructor(_item1 = new Item((0, uuid_1.v4)(), "TV", 500, "Entertainment"), _item2 = new Item((0, uuid_1.v4)(), "car", 1000, "vehicle"), _item3 = new Item((0, uuid_1.v4)(), "pants", 10.00, "clothing"), _item4 = new Item((0, uuid_1.v4)(), "notebook", 2.00, "school supplies"), _item5 = new Item((0, uuid_1.v4)(), "robot", 10000.00, "electronics"), _item6 = new Item((0, uuid_1.v4)(), "soda", 0.25, "beverage")) {
         this._item1 = _item1;
         this._item2 = _item2;
         this._item3 = _item3;
         this._item4 = _item4;
         this._item5 = _item5;
         this._item6 = _item6;
-        this._cart = [this._item1, this._item2, this._item3, this._item4, this._item5, this._item6];
+        this._inventory = [this._item1, this._item2, this._item3, this._item4, this._item5, this._item6];
     }
-    get cart() {
-        return this._cart;
+    get inventory() {
+        return this._inventory;
     }
-    set cart(value) {
-        this._cart = value;
+    set inventory(value) {
+        this._inventory = value;
     }
     static get currentShop() {
         return Shop._currentShop;
@@ -1237,8 +1144,181 @@ class Shop {
     static set currentShop(value) {
         Shop._currentShop = value;
     }
+    static get currentUser() {
+        return Shop._currentUser;
+    }
+    static set currentUser(value) {
+        Shop._currentUser = value;
+    }
+    showItems() {
+        var _a;
+        let shop = document.getElementById("shop");
+        const newStyle1 = {
+            width: "70vw",
+            padding: "0",
+            margin: "0",
+            height: "80vh"
+        };
+        Object.assign(shop.style, newStyle1);
+        console.log(shop);
+        let cardCont1 = document.createElement('div');
+        const newStyle = {
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: "70vw",
+            backgroundColor: "#d3d3d3",
+            height: "40vh"
+        };
+        Object.assign(cardCont1.style, newStyle);
+        console.log(cardCont1);
+        let cardCont2 = document.createElement('div');
+        const newStyle2 = {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "70vw",
+            backgroundColor: "#d3d3d3",
+            height: "40vh"
+        };
+        Object.assign(cardCont2.style, newStyle);
+        shop.append(cardCont1, cardCont2);
+        for (let item of this.inventory.slice(0, 3)) {
+            cardCont1.append(item.itemElement());
+        }
+        for (let item of this.inventory.slice(3, 6)) {
+            cardCont2.append(item.itemElement());
+        }
+        (_a = Shop.currentUser) === null || _a === void 0 ? void 0 : _a.cartHTMLElement();
+        for (let item of this.inventory) {
+            let addToCart = document.getElementById(item.id);
+            addToCart.addEventListener('click', () => {
+                var _a, _b;
+                (_a = Shop.currentUser) === null || _a === void 0 ? void 0 : _a.cart.push(item);
+                console.log(Shop.currentUser.cart);
+                (_b = Shop.currentShop) === null || _b === void 0 ? void 0 : _b.updateCart();
+            });
+        }
+    }
+    updateCart() {
+        var _a;
+        if (Shop.currentUser.cart) {
+            (_a = Shop.currentUser) === null || _a === void 0 ? void 0 : _a.cartHTMLElement();
+        }
+        else {
+            let div = document.createElement('div');
+            div.innerHTML = "The cart is empty";
+            let cart = document.getElementById('cart');
+            cart.innerHTML = '';
+            cart.append(div);
+        }
+    }
+    static login() {
+        let loginCont = document.getElementById('login-cont');
+        console.log("logging in");
+        let name = document.getElementById('name-input').value.toString();
+        console.log(name);
+        let age = document.getElementById('age-input').value.toString();
+        console.log(age);
+        if (name !== "" && age != "" && !isNaN(+age)) {
+            const newStyle = {
+                display: "none"
+            };
+            Object.assign(loginCont.style, newStyle);
+            let newUser = User.createNewUser(name, +age);
+            Shop.currentUser = newUser;
+            console.log(Shop.currentUser);
+            let newShop = new Shop();
+            Shop.currentShop = newShop;
+            Shop.currentShop.showItems();
+        }
+    }
 }
+exports.Shop = Shop;
 Shop._currentShop = null;
+Shop._currentUser = null;
+
+
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Objects_1 = __webpack_require__(18);
+let loginForm = document.getElementById('login-form');
+let loginCont = document.getElementById('login-cont');
+loginForm === null || loginForm === void 0 ? void 0 : loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log("submitted");
+    Objects_1.Shop.login();
+});
+// function login():void{
+//     console.log("logging in")
+//     let name: string | null =  (<HTMLInputElement>document.getElementById('name-input')).value.toString()
+//     console.log(name)
+//     let age: string | null  = (<HTMLInputElement>document.getElementById('age-input')).value.toString()
+//     console.log(age)
+//     if (name !== "" && age !="" && !isNaN(+age)){
+//         const newStyle: Partial<CSSStyleDeclaration> ={
+//             display: "none"
+//         }
+//         Object.assign(loginCont.style, newStyle)
+//     }
+//     let newUser: User = User.createNewUser(name, +age)
+//     Shop.currentUser = newUser
+//     console.log(Shop.currentUser)
+//     createShoppingPage()
+// }
+// function createShoppingPage():void{
+//     let TV:Item = new Item(uuidv4(), "TV", 500, "Entertainment")
+//     let car:Item = new Item(uuidv4(), "car", 1000, "vehicle")
+//     let pants:Item =  new Item(uuidv4(), "pants", 10.00, "clothing")
+//     let notebook:Item = new Item(uuidv4(), "notebook", 2.00, "school supplies")
+//     let robot:Item = new Item(uuidv4(), "robot", 10000.00, "electronics")
+//     let soda:Item = new Item(uuidv4(), "soda", 0.25, "beverage")
+//     let newShop: Shop = new Shop(TV, car, pants, notebook, robot, soda)
+//     Shop.currentShop = newShop
+//     const shopLayout = new ShopLayout()
+//     shopLayout.createOuterContainers()
+//     for (let item of Shop.currentShop.inventory){shopLayout.createItemCard(item)}
+//     for (let item of shopLayout.cards.slice(0,3)){
+//         shopLayout.outerComponents[0].append(item)
+//     }
+//     for (let item of shopLayout.cards.slice(3,7)){
+//         shopLayout.outerComponents[1].append(item)
+//     }
+//     let cart:HTMLElement = document.getElementById('cart')!
+//     cart.append(Shop.currentUser?.cartHTMLElement()!)
+// }
 
 })();
 
