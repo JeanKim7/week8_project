@@ -162,24 +162,27 @@ export class User {
             let cell3:HTMLElement = document.createElement('td')
             cell3.innerHTML = `${itemCount.length}`
             let cell4:HTMLElement = document.createElement('td')
-            let removeAllButton:HTMLElement
-            cell4.innerHTML = `<button id="${item.name}removeAll">X</button>`
+            let removeAllButton:HTMLElement = document.createElement('button')
+            removeAllButton.id = `${item.name}removeAll`
+            removeAllButton.innerHTML = "X"
+            cell4.append(removeAllButton)
             let cell5:HTMLElement = document.createElement('td')
-            cell5.innerHTML = `<button id="${item.name}removeOne">-1</button>`
+            let removeOneButton:HTMLElement = document.createElement('button')
+            removeOneButton.id = `${item.name}removeOne`
+            removeOneButton.innerHTML = "-1"
+            cell5.append(removeOneButton)
             
             tableRow.append(cell1, cell2, cell3, cell4, cell5)
             checkoutTable.append(tableRow)
-
             console.log(checkoutTable)
         }
-        console.log(document.getElementById(`"$robot"`)!)
 
 
         let checkoutTotal: HTMLElement = document.createElement('h4')
         checkoutTotal.innerHTML= `Total: $${Shop.currentUser?.cartTotal()}`
 
         cart.append(checkoutTable, checkoutTotal)
-    
+        for (let item of myCartSet){ Shop.currentUser?.addRemoveEventListeners(item)}
 
         return cart}
     }

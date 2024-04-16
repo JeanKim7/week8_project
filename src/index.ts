@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-import { ShopLayout } from "./additional/ShopLayout";
+// import { v4 as uuidv4 } from "uuid";
+// import { ShopLayout } from "./additional/ShopLayout";
 import {Item, User, Shop} from "./additional/Objects"
 
 
@@ -12,6 +12,10 @@ loginForm?.addEventListener('submit', (e)=> {
     console.log("submitted");
     Shop.login()
     })   
+
+
+//===================Code from another approach, can ignore
+
 
 // function login():void{
 //     console.log("logging in")
